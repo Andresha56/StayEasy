@@ -18,7 +18,7 @@ export const create = async (req, res,next) => {
         } = req.body;
 
         await Hotel.create({ name, address, city, distance, image, rating, rooms, cheapestPrice });
-        res.status(200).json({ message: "success" });
+        res.status(200).json({success: true });
     }
     catch (error) {
         next(error);
@@ -45,7 +45,7 @@ export const update = async (req, res, next) => {
             return res.status(404).json({ error: "Hotel not found" });
         }
 
-        return res.status(200).json({ message: "ok", data: updatedHotel });
+        return res.status(200).json({ success: true , data: updatedHotel });
     }
     catch (error) {
         next(error);
@@ -62,7 +62,7 @@ export const del = async (req, res,next) => {
             return res.status(400).json({ message: "Invalid id" });
         }
         await Hotel.findByIdAndDelete(id);
-        res.status(200).json({ message: "ok" })
+        res.status(200).json({ success: true  })
     }
     catch (error) {
         next(error);
