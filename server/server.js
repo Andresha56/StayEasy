@@ -26,18 +26,17 @@ server
 
     // ---handel---internal---errors--if--any--occure---
     .use((err, req, res, next) => {
-        console.log(err);
-        console.log(errorMessage);
-        const errorStaus = err.status || 500;
-        return res.status(500).json(
-            {
-                success: false,
-                status: errorStaus,
-                message: "Internal server error..."
-            }
-
-        );
-    })
+        console.error(err);
+        let errorMessage = err.message || "Something went wrong"; 
+        const errorStatus = err.status || 500;  
+    
+        return res.status(errorStatus).json({
+            success: false,
+            status: errorStatus,
+            message: errorMessage,
+        });
+    });
+    
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => console.log(`server is running at port ${port}`))

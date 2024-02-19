@@ -17,4 +17,4 @@ const UsersSchema=new Schema({
     }
 
 },{ timestamps: true });
-export const Users=mongoose.model("Users",UsersSchema);
+export const Users=mongoose.model("user",UsersSchema);
