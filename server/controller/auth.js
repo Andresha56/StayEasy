@@ -37,8 +37,10 @@ export const logIn = async (req, res, next) => {
         if (!user) next(createError(404, "User not found!"));
         //decode password
         const conformpassword=await bcryptjs.compare(password,user.password);
-        if(!conformpassword)next(createError(404,"userlname or password is incorrect!"))
-        return res.status(200).send(user);
+        if(!conformpassword)next(createError(404,"userlname or password is incorrect!"));
+        // Omit password from user details
+        const { password: omitPassword, ...showOtherDetails } = user._doc;
+        return res.status(200).send(showOtherDetails);
     } catch (error) {
         next(error);
     }
