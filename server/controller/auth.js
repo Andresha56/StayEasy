@@ -33,11 +33,12 @@ export const logIn = async (req, res, next) => {
     try {
         const { username, password } = req.body;
         const user = await Users.findOne({ username:username });
-        console.log(user);
+        
         if (!user) next(createError(404, "User not found!"));
+        //decode password
         const conformpassword=await bcryptjs.compare(password,user.password);
         if(!conformpassword)next(createError(404,"userlname or password is incorrect!"))
-
+        return res.status(200).send(user);
     } catch (error) {
         next(error);
     }
