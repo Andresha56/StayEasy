@@ -14,7 +14,13 @@ const UsersSchema=new Schema({
         type:String,
         required:true,
         min:8,
+    },
+    IsAdmin:{
+        type:Boolean,
+        default:false,
     }
+
+    
 
 },{ timestamps: true });
 export const Users=mongoose.model("user",UsersSchema);
