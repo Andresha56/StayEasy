@@ -7,10 +7,8 @@ export const registerUser = (req, res, next) => {
     try {
         const { username, email, password, isAdmin } = req.body;
         Users.findOne({ username, email }).then(async (user) => {
-            if (user) {
-                //Throw 400 error if the user already exist 
-                return res.status(400).json({ success: false, message: "user already exist!" });
-            }
+            //Throw 400 error if the user already exist 
+            if (user) next(createError(400, "user already exist!"));
             else {
                 //hash user password before saving 
                 const saltRounds = 10;
