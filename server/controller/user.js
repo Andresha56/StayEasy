@@ -53,7 +53,6 @@ export const getAllUsers = async (req, res,next) => {
             const {password,...otherUserDetailsExceptPassword}=user._doc;
             return otherUserDetailsExceptPassword;
         })
-        console.log(usersWithoutPassword);
         res.status(200).json(usersWithoutPassword);
     }
     catch (error) {

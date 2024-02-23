@@ -14,7 +14,7 @@ export const registerUser = (req, res, next) => {
                 const saltRounds = 10;
                 const hashPassword = await bcryptjs.hash(password, saltRounds);
 
-                //crreate a new user
+                //create a new user
                 const newUser = new Users({ username, password: hashPassword, email, isAdmin });
                 newUser.save();
                 return res.status(200).json({ success: true, message: "user created successfully!" })
@@ -42,13 +42,13 @@ export const logIn = async (req, res, next) => {
         const token = jwt.sign({ id: user._id, isAdmin: user.IsAdmin }, secrate);
         console.log(token)
         // Omit password from user details
-        const { password: omitPassword, ...showOtherDetails } = user._doc;
+        const { password: omitPassword, ...showDetailsWithoutPassword } = user._doc;
         return res
-            .cookie("access_toekn", token, {
+            .cookie("access_token", token, {
                 httpOnly: true,
             })
             .status(200)
-            .json({showOtherDetails, message: "Logged in. Nice work." });
+            .json({showDetailsWithoutPassword, message: "Logged in. Nice work." });
     } catch (error) {
         next(error);
     }
