@@ -40,7 +40,6 @@ export const logIn = async (req, res, next) => {
         // ---apply--jwt__tokn-----
         const secrate = process.env.JWT_SECRATE;
         const token = jwt.sign({ id: user._id, isAdmin: user.IsAdmin }, secrate);
-        console.log(token)
         // Omit password from user details
         const { password: omitPassword, ...showDetailsWithoutPassword } = user._doc;
         return res

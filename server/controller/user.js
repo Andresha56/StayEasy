@@ -1,6 +1,6 @@
-
+import mongoose from "mongoose";
 import { Users } from "../model/Users.js";
-
+import {omitPassword} from "../utils/hidePassword/omitPssword.js"
 
 //update user
 export const updateUser = async (req, res, next) => {
@@ -18,8 +18,8 @@ export const updateUser = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({ error: "user not found" });
         }
-
-        return res.status(200).json({ success: true , data: updatedUsers });
+        const userWithoutPassword = omitPassword(user);
+        return res.status(200).json({ success: true , userWithoutPassword });
     }
     catch (error) {
         next(error);

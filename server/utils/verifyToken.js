@@ -14,3 +14,20 @@ export const authorization =(req,res,next)=>{
         next(createError(500,"something went wrong!"))
       }
 }
+
+export const verifyUser = (req, res, next) => {
+    authorization(req, res, (err) => {
+        if (err) {
+            // If there's an authorization error next
+            return next(err);
+        }
+        console.log(req.user.id);
+        //If user is authorised call next
+        if (req.user.id === req.params.id) {
+            next();
+        } else {
+            // If the user is not authorized
+            next(createError(403, "Not authorized"));
+        }
+    });
+};
