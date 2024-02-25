@@ -1,6 +1,6 @@
 
 import mongoose,{Schema} from "mongoose";
-export const roomSchema=new Schema({
+const roomSchema=new Schema({
     title:{
         type:String,
         required:true,
@@ -22,4 +22,5 @@ export const roomSchema=new Schema({
         rewuired:true,
     },image:{type:[String]}
 
-})
+},{timestamps: true});
+export const Room=mongoose.model("room",roomSchema);
