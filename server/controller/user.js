@@ -50,8 +50,8 @@ export const getAllUsers = async (req, res,next) => {
         const users = await Users.find({});
         // Omit password from user details
         const usersWithoutPassword=users.map((user)=>{
-            const {password,...otherUserDetailsExceptPassword}=user._doc;
-            return otherUserDetailsExceptPassword;
+            const userWithoutPassword = omitPassword(user);
+            return userWithoutPassword;
         })
         res.status(200).json(usersWithoutPassword);
     }

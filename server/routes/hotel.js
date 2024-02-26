@@ -1,11 +1,11 @@
 import express from"express";
-import { verifyUser } from "../utils/verifyToken.js";
-import { create,update,del,getAll } from "../controller/hotel.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
+import { create,update,deleteHotel,getAll } from "../controller/hotel.js";
 const router =express.Router();
 router
-.post("/register",verifyUser,create)
-.post("/update/:id",verifyUser,update)
-.delete("/delete/:id",verifyUser,del)
+.post("/register",verifyAdmin,create)
+.post("/update/:id",verifyAdmin,update)
+.delete("/delete/:id",verifyAdmin,deleteHotel)
 .get("/get/all/data",getAll)
 
 

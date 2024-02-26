@@ -2,11 +2,12 @@ import { Users } from "../model/Users.js";
 import bcryptjs from "bcryptjs";
 import createError from 'http-errors';
 import jwt from "jsonwebtoken";
+import { omitPassword } from "../utils/hidePassword/omitPssword.js";
 //register new user 
 export const registerUser = (req, res, next) => {
     try {
         const { username, email, password, isAdmin } = req.body;
-        Users.findOne({ username, email }).then(async (user) => {
+        Users.findOne({ $or: [{ username }, { email }] }).then(async (user) => {
             //Throw 400 error if the user already exist 
             if (user) next(createError(400, "user already exist!"));
             else {
@@ -33,7 +34,7 @@ export const logIn = async (req, res, next) => {
         const { username, password } = req.body;
         const user = await Users.findOne({ username: username });
 
-        if (!user) next(createError(404, "User not found!"));
+        if (!user) next(createError(404, "username or password is incorrect"));
         //decode password
         const isPasswordValid = await bcryptjs.compare(password, user.password);
         if (!isPasswordValid) next(createError(404, "userlname or password is incorrect!"));
@@ -41,13 +42,13 @@ export const logIn = async (req, res, next) => {
         const secrate = process.env.JWT_SECRATE;
         const token = jwt.sign({ id: user._id, isAdmin: user.IsAdmin }, secrate);
         // Omit password from user details
-        const { password: omitPassword, ...showDetailsWithoutPassword } = user._doc;
+        const userWithoutPassword = omitPassword(user);
         return res
             .cookie("access_token", token, {
                 httpOnly: true,
             })
             .status(200)
-            .json({showDetailsWithoutPassword, message: "Logged in. Nice work." });
+            .json({userWithoutPassword, success:true ,message:'logIn successful!'});
     } catch (error) {
         next(error);
     }
