@@ -26,7 +26,7 @@ export const hotelSchema = new Schema({
     },
     description: {
         type: String,
-        // required: true
+        required: true
     },
     rating: {
         type: Number,

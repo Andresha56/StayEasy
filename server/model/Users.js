@@ -17,10 +17,7 @@ const UsersSchema=new Schema({
     },
     IsAdmin:{
         type:Boolean,
-        default:false,
+        default:true,
     }
-
-    
-
 },{ timestamps: true });
 export const Users=mongoose.model("user",UsersSchema);

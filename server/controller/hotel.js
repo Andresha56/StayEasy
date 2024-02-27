@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 //create
 export const create = async (req, res,next) => {
     try {
-        const {name,address,city,distance,image,rating,rooms,cheapestPrice} = req.body;
-        await Hotel.create({ name, address, city, distance, image, rating, rooms, cheapestPrice });
+        const {name,address,city,distance,description,image,rating,rooms,cheapestPrice} = req.body;
+        await Hotel.create({ name, address, city, distance,description, image, rating, rooms, cheapestPrice });
         res.status(200).json({success: true });
     }
     catch (error) {

@@ -1,20 +1,21 @@
 import mongoose from "mongoose";
 import { Users } from "../model/Users.js";
 import {omitPassword} from "../utils/hidePassword/omitPssword.js"
-
+import { hashPassword } from "../utils/hashPassword/hashPassword.js";
 //update user
 export const updateUser = async (req, res, next) => {
     try {
         const id = req.params.id;
         const newData = req.body;
-
         // Validate if id is a valid ObjectId before attempting to update
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ error: "Invalid ID" });
         }
-
+        if (newData.password) {
+            const hashedPassword = await hashPassword(newData.password);
+            newData.password = hashedPassword;
+        }
         const user = await Users.findByIdAndUpdate(id, newData, { new: true });
-
         if (!user) {
             return res.status(404).json({ error: "user not found" });
         }
@@ -22,13 +23,12 @@ export const updateUser = async (req, res, next) => {
         return res.status(200).json({ success: true , userWithoutPassword });
     }
     catch (error) {
-        next(error);
+        next(error);    
 
     }
 };
 
 //Delete users
-
 export const deleteUser = async (req, res,next) => {
     try {
         const id = req.params.id;

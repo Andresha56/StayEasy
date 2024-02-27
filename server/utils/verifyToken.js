@@ -7,7 +7,6 @@ export const authorization =(req,res,next)=>{
     }
     try {
         const data = jwt.verify(token,process.env.JWT_SECRATE );
-        console.log(data);
         req.user = data;
         return next();
       } catch(e) {
@@ -27,8 +26,8 @@ export const verifyUser = (req, res, next) => {
         if (req.user.id === req.params.id) {
             next();
         } else {
-            // If the user is not authorized
-            next(createError(403, "Not authorized"));
+            // If the id the invalid
+            next(createError(400, "Invalid Id"));
         }
     });
 };
@@ -40,7 +39,7 @@ export const verifyAdmin = (req, res, next) => {
             // If there's an authorization error next
             return next(err);
         }
-        if (req.user.IsAdmin) {
+        if (req.user.isAdmin) {
             next();
         } else {
             // If the user is not authorized
