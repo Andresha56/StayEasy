@@ -1,0 +1,10 @@
+.searchInputCon input{
+    width: 70%;
+    padding: 17px;
+    border-radius: 50px;
+    border: 1px solid rgb(91, 91, 91);
+    outline: 0;
+    background: transparent;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    position: relative;
+}

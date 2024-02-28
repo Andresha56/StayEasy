@@ -38,7 +38,7 @@ export const Header = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             color={theme.palette.primary.main}
             sx={{
               mr: 2,
@@ -59,7 +59,7 @@ export const Header = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' }}
+                sx={{ my: 2, mr:2, ml:2, display: 'block' }}
               >
                 {page}
               </Button>
@@ -92,11 +92,14 @@ export const Header = () => {
                 horizontal: 'left',
               }}
               keepMounted
-              
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none',boxShadow:"none" },
+                display: { xs: 'block', md: 'none'},
               }}
             >
               {pagesForSmallDevice.map((page) => (
