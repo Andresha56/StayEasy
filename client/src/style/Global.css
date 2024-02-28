@@ -1,0 +1,11 @@
+body{
+    color:rgb(46, 46, 46);
+    font-family: "Quicksand", sans-serif;
+}
+a{
+    font-family: "Quicksand", sans-serif;
+}
+.active{
+    background-color: #f73972 !important;
+    color:aliceblue !important;
+}
