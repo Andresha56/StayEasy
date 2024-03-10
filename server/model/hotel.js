@@ -18,15 +18,14 @@ export const hotelSchema = new Schema({
     },
     distance: {
         type: String,
-        required: true
+        // required: true
     },
     images: {
         type: [String],
-        // required: true
+        required: true
     },
     description: {
         type: String,
-        required: true
     },
     rating: {
         type: Number,

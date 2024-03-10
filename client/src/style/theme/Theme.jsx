@@ -5,6 +5,9 @@ export const theme = createTheme({
     primary: {
       main: "#f73972",
     },
+    secondary:{
+      main:'rgb(46, 46, 46);'
+    }
   },
   typography: {
     fontFamily: {

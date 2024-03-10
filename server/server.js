@@ -18,8 +18,8 @@ const server = express();
 ConnectToDB();
 // ----middle---wares----
 server
-    .use(cookieParser())
     .use(cors())
+    .use(cookieParser())
     .use(express.json())
     .use("/auth", authRouter)
     .use("/user", userRouter)

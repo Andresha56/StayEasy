@@ -1,5 +1,5 @@
 .searchInputCon input{
-    width: 70%;
+    width: 100%;
     padding: 17px;
     border-radius: 50px;
     border: 1px solid rgb(91, 91, 91);
@@ -7,4 +7,14 @@
     background: transparent;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     position: relative;
+}
+.nav-search-values a{
+    color: rgb(46, 46, 46);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    transition: all 0.2s ease-in;
+}
+.nav-search-values a:hover{
+    background-color: rgb(222, 218, 218);
 }
