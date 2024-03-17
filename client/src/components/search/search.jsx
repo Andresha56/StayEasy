@@ -3,8 +3,8 @@ import Container from '@mui/material/Container';
 import SearchIcon from '@mui/icons-material/Search';
 import './search.css';
 import { getData } from '../utils/Api';
-import { useEffect, useState,useRef } from 'react';
-import {RemoveDuplicates}  from  '../utils/RemoveDuplicate/RemoveDuplicates';
+import { useEffect, useState, useRef } from 'react';
+import { RemoveDuplicates } from '../utils/RemoveDuplicate/RemoveDuplicates';
 export const SearchInput = () => {
   const [destination, setDestination] = useState("");
   const [HotelData, setHotelData] = useState([]);
@@ -20,7 +20,7 @@ export const SearchInput = () => {
     ///remove white spaces and then check
     if (destination.trim().length > 0) {
       getData("/get/all/data").then((response) => {
-        const filteredHotel=RemoveDuplicates(response);
+        const filteredHotel = RemoveDuplicates(response);
         setHotelData(filteredHotel);
 
       })
@@ -36,27 +36,25 @@ export const SearchInput = () => {
 
   return (
     <Container>
-      <Stack flexDirection={'row'} mt={4} justifyContent={'center'} margin={'auto'} width={'70%'} position={'relative'} alignItems={'center'} className='searchInputCon'>
-        <input type="text" placeholder='search destination' ref={inputRef} value={destination} onChange={e => setDestination(e.target.value)} />
-        <Button className='active' sx={{ borderRadius: "24px", marginLeft: "-70px" }}><SearchIcon /></Button>
-      </Stack>
-      {/* ---shaow---api---results----- */}
+        <Stack flexDirection={'row'} justifyContent={'center'} margin={'auto'} width={'70%'} position={'relative'} alignItems={'center'} className='searchInputCon'>
+          <input type="text" placeholder='search destination' ref={inputRef} value={destination} onChange={e => setDestination(e.target.value)} />
+          <Button className='active' sx={{ borderRadius: "24px", marginLeft: "-70px" }}><SearchIcon /></Button>
+        </Stack>
+        {/* ---shaow---api---results----- */}
 
-      {
-        destination.length > 0 && (
-          <Stack className='nav-search-values' width={'50%'}margin={'auto'} bgcolor={'#F5F5F5'} borderRadius={'10px'}>
-            {
-              HotelData
-                .filter((hotel) => hotel.city.toLowerCase().includes(destination.toLocaleLowerCase()))
-                .map((hotel, index) => destination.length > 0 ? (
-                  <a href="/" key={index}>{hotel.city}</a>
-                ) : null)
-
-            }
-          </Stack>
-        )
-      }
-
-    </Container>
+        {
+          destination.length > 0 && (
+            <Stack className='nav-search-values' width={'50%'} margin={'auto'} bgcolor={'#F5F5F5'} borderRadius={'10px'}>
+              {
+                HotelData
+                  .filter((hotel) => hotel.city.toLowerCase().includes(destination.toLocaleLowerCase()))
+                  .map((hotel, index) => destination.length > 0 ? (
+                    <a href="/" key={index}>{hotel.city}</a>
+                  ) : null)
+              }
+            </Stack>
+          )
+        }
+      </Container>
   )
 }

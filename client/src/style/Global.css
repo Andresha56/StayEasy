@@ -4,6 +4,7 @@ body{
 }
 a{
     font-family: "Quicksand", sans-serif;
+    text-decoration: none;
 }
 .active{
     background-color: #f73972 !important;

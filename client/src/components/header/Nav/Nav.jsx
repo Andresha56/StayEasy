@@ -1,5 +1,5 @@
-import logo from "../../assets/logo.svg";
-import "./Header.css"
+import logo from "../../../assets/images/Nav/logo.svg";
+import "./Nav.css"
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,12 +12,12 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { theme } from "../../style/theme/Theme";
+import { theme } from "../../../style/theme/Theme";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const pagesForSmallDevice = ['Products','Pricing','Sign up','Sign In'];
 
-export const Header = () => {
+export const Nav = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -29,7 +29,7 @@ export const Header = () => {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+    <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none", mb:'2rem'}}>
       <Container>
         <Toolbar disableGutters className="header-logo">
         <a href="/"><img src={logo} alt='logo'/></a>

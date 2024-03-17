@@ -1,11 +1,12 @@
-import { Header } from "../nav/Header";
-import { SearchInput } from "../search/search";
 import "../../style/Global.css"
-export const Home=()=>{
-    return(
+import { Nav } from "../header/Nav/Nav";
+import StickeyHeader from "../StickeyHeader/StickeyHeader";
+import { Container } from "@mui/material";
+export const Home = () => {
+    return (
         <>
-        <Header/>
-        <SearchInput/>
+            <Nav/>
+            <StickeyHeader/>
         </>
     )
 }
