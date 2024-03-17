@@ -16,9 +16,9 @@ export const hotelSchema = new Schema({
         type: String,
         required: true
     },
-    distance: {
-        type: String,
-        // required: true
+    featuredImage:{
+        type:String,
+        required:true,
     },
     images: {
         type: [String],
