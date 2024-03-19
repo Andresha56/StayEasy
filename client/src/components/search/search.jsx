@@ -47,9 +47,9 @@ export const SearchInput = () => {
             <Stack className='nav-search-values' width={'50%'} margin={'auto'} bgcolor={'#F5F5F5'} borderRadius={'10px'}>
               {
                 HotelData
-                  .filter((hotel) => hotel.city.toLowerCase().includes(destination.toLocaleLowerCase()))
+                  .filter((hotel) => hotel.location.toLowerCase().includes(destination.toLocaleLowerCase()))
                   .map((hotel, index) => destination.length > 0 ? (
-                    <a href="/" key={index}>{hotel.city}</a>
+                    <a href="/" key={index}>{hotel.location}</a>
                   ) : null)
               }
             </Stack>

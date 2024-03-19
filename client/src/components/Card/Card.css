@@ -1,0 +1,12 @@
+.card-img-con img{
+    border-radius: 10px;;
+    height: 100%;
+    width: 100%;
+    object-fit:cover ;
+}
+.card-Content-Container h2,p{
+    margin: 2px;
+}
+.card-hotels-price img{
+    height: 17px;
+}
