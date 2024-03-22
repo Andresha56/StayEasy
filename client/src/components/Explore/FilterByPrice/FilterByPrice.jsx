@@ -16,7 +16,6 @@ export default function FilterByPrice() {
 
   return (
     <Stack justifyContent={'flex-end'} flexDirection={'row'} alignItems={'center'}>
-      <img src={filter} alt="" />
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}

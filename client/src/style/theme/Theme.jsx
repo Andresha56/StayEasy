@@ -10,9 +10,7 @@ export const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: {
-      "Quicksand": 'sans-serif',
-    },
+    fontFamily: 'Quicksand, sans-serif',
   },
   components: {
     MuiButton: {
