@@ -1,10 +1,15 @@
-import './App.css';
 import "../src/style/Global.css"
-import { Home } from './components/home/Home';
+import Landing from "./components/private/Landing/Landing";
+import { Nav } from "./components/shared/Nav/Nav";
+import Footer from "./components/shared/Footer/Footer";
+import "./style/Global.css"
+import "./style/Scroll.css"
 function App() {
   return (
     <>
-      <Home/>
+      <Nav/>
+      <Landing/>
+      <Footer/>
     </>
   );
 }

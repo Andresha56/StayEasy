@@ -5,4 +5,4 @@ function Trim({str,maxLength}) {
     return str;
 }
 
-export default Trim
+export default Trim;

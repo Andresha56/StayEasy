@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { theme } from "../../../style/theme/Theme";
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Stays', 'Experience', 'Online Experience'];
 const pagesForSmallDevice = ['Products','Pricing','Sign up','Sign In'];
 
 export const Nav = () => {
@@ -52,7 +52,7 @@ export const Nav = () => {
               }
             }}
           >
-            MakeMyTrip
+            BookMyTrip
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

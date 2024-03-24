@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { SearchInput } from '../search/search';
-import Explore from '../Explore/Explore';
 import './StickeyHeader.css';
 import { Box } from '@mui/material';
-import Swipe from '../Explore/Swiper/Swiper';
+import Swipe from '../Guide/Swiper/Swiper';
 function StickyHeader() {
     const [isFix, setIsFix] = useState(false);
     const setFixHeader = () => {
@@ -24,7 +23,6 @@ function StickyHeader() {
     return (
             <Box className={isFix ? 'fixed-header' : 'static-header'}>
                 <SearchInput />
-                {/* <Explore /> */}
                 <Swipe/>
             </Box>
     );

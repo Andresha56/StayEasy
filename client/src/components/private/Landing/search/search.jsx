@@ -1,10 +1,10 @@
-import { Box, Stack, Button, Typography } from '@mui/material';
+import {Stack, Button} from '@mui/material';
 import Container from '@mui/material/Container';
 import SearchIcon from '@mui/icons-material/Search';
 import './search.css';
-import { getData } from '../utils/Api';
+import { getData } from '../../../utils/Api';
 import { useEffect, useState, useRef } from 'react';
-import { RemoveDuplicates } from '../utils/RemoveDuplicate/RemoveDuplicates';
+import { RemoveDuplicates } from '../../../utils/RemoveDuplicate/RemoveDuplicates';
 export const SearchInput = () => {
   const [destination, setDestination] = useState("");
   const [HotelData, setHotelData] = useState([]);
@@ -36,11 +36,12 @@ export const SearchInput = () => {
 
   return (
     <Container>
+      <Stack position={'relative'}>
         <Stack flexDirection={'row'} justifyContent={'center'} margin={'auto'} width={'70%'} position={'relative'} alignItems={'center'} className='searchInputCon'>
           <input type="text" placeholder='search destination' ref={inputRef} value={destination} onChange={e => setDestination(e.target.value)} />
           <Button className='active' sx={{ borderRadius: "24px", marginLeft: "-70px" }}><SearchIcon /></Button>
         </Stack>
-        {/* ---shaow---api---results----- */}
+        {/* ---show---api---results----- */}
 
         {
           destination.length > 0 && (
@@ -55,6 +56,7 @@ export const SearchInput = () => {
             </Stack>
           )
         }
-      </Container>
+      </Stack>
+    </Container>
   )
 }

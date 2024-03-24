@@ -1,6 +1,5 @@
 import beach from "../../images/Explore/beach.svg"
 import hiking from "../../images/Explore/hiking.svg"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import desert from "../../images/Explore/desert.svg"
 import skiing from "../../images/Explore/skiing.svg"
 import igloo from "../../images/Explore/igloo.svg"

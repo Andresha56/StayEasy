@@ -8,6 +8,13 @@
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     position: relative;
 }
+.nav-search-values{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 55px;
+}
 .nav-search-values a{
     color: rgb(46, 46, 46);
     margin-top: 10px;

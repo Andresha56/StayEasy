@@ -1,9 +1,10 @@
 import * as React from 'react';
+import "./FilterByPrice.css"
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
+import Menu from '@mui/material/Menu';  
 import MenuItem from '@mui/material/MenuItem';
-import { Box, Stack } from '@mui/material';
-import filter from "../../../assets/images/Filter/filter.svg"
+import { Stack } from '@mui/material';
+import filter from "../../../../assets/images/Filter/filter.svg"
 export default function FilterByPrice() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -15,7 +16,8 @@ export default function FilterByPrice() {
   };
 
   return (
-    <Stack justifyContent={'flex-end'} flexDirection={'row'} alignItems={'center'}>
+    <Stack justifyContent={'flex-end'} flexDirection={'row'} alignItems={'center'} className='filterByPrice-containe'>
+      <img src={filter} alt="" />
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
