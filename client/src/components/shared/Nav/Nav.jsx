@@ -10,10 +10,9 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { theme } from "../../../style/theme/Theme";
-
+import FavouriteHotels from "../Favourite/Favourite";
 const pages = ['Stays', 'Experience', 'Online Experience'];
 const pagesForSmallDevice = ['Products','Pricing','Sign up','Sign In'];
 
@@ -65,11 +64,12 @@ export const Nav = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 ,display: { xs: 'none', md: 'flex' },}}>
-            <Tooltip>
+          <Box sx={{ flexGrow: 0 ,display: { xs: 'none', md: 'flex' }}}>
+            <Box display={'flex'}alignItems={'center'}>
+              <FavouriteHotels/>
               <Button>Sign In</Button>
               <Button className="active">Sign up</Button>
-            </Tooltip>
+            </Box>
           </Box>
           {/* ---------nav---menu------- */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, flexDirection: "row-reverse" }}>

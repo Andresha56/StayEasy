@@ -1,13 +1,21 @@
-import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from "swiper/modules";
 import Container from '@mui/material/Container'
 import { ExploreData } from '../../../../../assets/data/Explore/Explore';
 import FilterByPrice from '../../FilterByPrice/FilterByPrice';
+import { useHotelDatasContext } from '../../../../utils/Context/GetHotelData';
 import 'swiper/css';
 import "./Swiper.css"
 import { Box, Stack } from '@mui/material';
+
 function Swipe() {
+    const { hotelsData,setSelecteadHotels} = useHotelDatasContext();
+    const handleSelectedDestination = (event) => {
+        const location = event.target.innerText || event.target.alt;
+        // filter the data besed on selected location
+        const filteredHotels = hotelsData.filter(data => data.LocationType && data.LocationType.includes(location));
+        setSelecteadHotels(filteredHotels);
+    }
     return (
         <Container>
             <Stack flexDirection={'row'} alignItems={'center'} mb={4} mt={3} px={3}>
@@ -20,8 +28,6 @@ function Swipe() {
                             delay: 2500,
                             disableOnInteraction: false,
                         }}
-                        onSlideChange={() => console.log('slide change')}
-                        onSwiper={(swiper) => console.log(swiper)}
                         navigation={true}
                         modules={[Autoplay, Navigation]}
                         breakpoints={{
@@ -43,10 +49,8 @@ function Swipe() {
                             ExploreData.map((data, indx) =>
                                 <SwiperSlide>
                                     <Stack flexDirection={'column'} className='swiper-content-container' justifyContent={'center'} alignItems={'center'} gap={0}>
-                                        <a href='./'>
-                                        <img src={data.image} alt={data.destination}/>
-                                        </a>
-                                        <a href='./'>{data.destination}</a>
+                                        <img onClick={handleSelectedDestination} src={data.image} alt={data.destination} />
+                                        <span onClick={handleSelectedDestination}>{data.destination}</span>
                                     </Stack>
                                 </SwiperSlide>
                             )

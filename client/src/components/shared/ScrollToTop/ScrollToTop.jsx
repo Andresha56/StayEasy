@@ -1,5 +1,4 @@
 import React from 'react'
-import "./ScrollToTop.css"
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import {Box } from '@mui/material';
 

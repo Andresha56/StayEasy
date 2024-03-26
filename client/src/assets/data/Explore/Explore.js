@@ -15,11 +15,11 @@ export const ExploreData = [
        image:beach,
        link:"/",
     },{
-        destination: "Skiin",
+        destination: "snow",
        image:skiing,
        link:"/",
     },{
-        destination: "Housesboats",
+        destination: "Housesboat",
        image:houseboat,
        link:"/",
     },{
