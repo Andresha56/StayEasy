@@ -9,28 +9,39 @@ import Trim from '../../../utils/TrimLength/Trim'
 import { useHotelDatasContext } from '../../../utils/Context/GetHotelData'
 
 function Card() {
-  const [favourite, setFavourite] = useState(false);
   const [hotels, setHotels] = useState([])
   const { hotelsData, selectedHotels } = useHotelDatasContext();
+  //show all hotels 
   useEffect(() => {
     if (hotelsData.length > 0)  setHotels(hotelsData);
   }, [hotelsData]);
+  //show based on selected hotels only  
   useEffect(()=>{
     if(selectedHotels) setHotels(selectedHotels);
   },[selectedHotels]);
+  //handel favourite hotels 
+  const handleFavourite = (hotelId) => {
+    const updatedHotels = hotels.map(hotel => {
+      if (hotel._id === hotelId) {
+        return { ...hotel, IsFavourite: !(hotel.IsFavourite) };
+      }
+      return hotel;
+    });
+    setHotels(updatedHotels);
+  };
   return (
     <Container>
       <Stack flexDirection={'row'} justifyContent={'center'} flexWrap={'wrap'} gap={3} className='card-Content-Container'>
-        {hotels.map((hotel, index) => {
+        {hotels.map((hotel) => {
           return (
-            <Stack key={index} width={'270px'} mb={4}>
+            <Stack key={hotel._id} width={'270px'} mb={4}>
               <Box height={'250px'} width={'100%'} className="card-img-con" position={'relative'}>
                 <img src={hotel?.featuredImage} alt={hotel?.LocationType} />
                 {
-                  favourite ?
-                    <FavoriteIcon sx={{ position: "absolute", top: "10px", right: "20px", color: "#f73972", cursor: "pointer" }} />
+                  hotel?.IsFavourite ?
+                    <FavoriteIcon onClick={()=>{handleFavourite(hotel._id)}} sx={{ position: "absolute", top: "10px", right: "20px", color: "#f73972", cursor: "pointer" }} />
                     :
-                    <FavoriteBorderIcon sx={{ position: "absolute", top: "10px", right: "20px", cursor: "pointer" }} />
+                    <FavoriteBorderIcon onClick={()=>{handleFavourite(hotel._id)}} sx={{ position: "absolute", top: "10px", right: "20px", cursor: "pointer" }} />
                 }
 
 

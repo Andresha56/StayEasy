@@ -17,6 +17,7 @@ function GetHotelData({ children }) {
   useEffect(() => {
     getData("/get/all/data").then((response) => {
       setHotelsDatas(response);
+      console.log(response)
     })
   },[])
   
